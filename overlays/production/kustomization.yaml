@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../bases/deployment
+  - ../../bases/service
+  - ../../bases/ingress
+
+namePrefix: prod-
+
+patches:
+  - target:
+      kind: Deployment
+      name: app
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
