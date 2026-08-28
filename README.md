@@ -9,15 +9,25 @@ kustomize-overlays/
 ├── bases/
 │   ├── deployment/
 │   ├── service/
-│   └── ingress/
+│   ├── ingress/
+│   ├── configmap/
+│   ├── secret/
+│   └── cronjob/
 └── overlays/
     ├── development/
     ├── staging/
-    └── production/
+    ├── production/
+    ├── testing/
+    └── canary/
 ```
 
 ## Usage
 
 ```bash
 kubectl apply -k overlays/production
+kubectl apply -k overlays/canary
 ```
+
+## License
+
+MIT
