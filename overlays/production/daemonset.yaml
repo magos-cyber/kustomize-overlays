@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .release.name }}-agent
+spec:
+  selector:
+    matchLabels:
+      app: agent
+  template:
+    metadata:
+      labels:
+        app: agent
+    spec:
+      containers:
+        - name: agent
+          image: agent:latest
+          volumeMounts:
+            - name: host-root
+              mountPath: /host-root
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /root
